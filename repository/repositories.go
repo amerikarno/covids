@@ -7,7 +7,7 @@ import (
 	"log"
 	"net/http"
 	"time"
-	"wnexam/app"
+	"github.com/amerikarno/covids/app"
 )
 
 //Data struct create

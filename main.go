@@ -1,28 +1,29 @@
 package main
 
 import (
-	"wnexam/app"
-	"wnexam/repository"
+	"github.com/amerikarno/covids/app"
+	"github.com/amerikarno/covids/config"
+	"github.com/amerikarno/covids/repository"
 
 	"github.com/gin-gonic/gin"
-	// "github.com/rs/cors/wrapper/gin"
 )
 
-func main(){
-	//url to get covid cases
-	url := "https://static.wongnai.com/devinterview/covid-cases.json"
+func init() {
+	config.Init()
+}
 
-	handler := initHandler(url)
-	
+func main() {
+	handler := initHandler(config.App.URL)
+
 	//start gin and route
 	r := gin.Default()
 
 	r.GET("/covid/summary", handler.GetCovidSum)
-	
+
 	r.Run()
 }
 
-func initHandler(url string) *app.Handler{
+func initHandler(url string) *app.Handler {
 	repo := repository.NewDataRepository(url)
 	apps := app.NewUsecase(repo)
 

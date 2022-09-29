@@ -3,7 +3,7 @@ package repository_test
 import (
 	"fmt"
 	"testing"
-	"wnexam/repository"
+	"github.com/amerikarno/covids/repository"
 )
 
 func TestGetJSONUrl(t *testing.T) {
